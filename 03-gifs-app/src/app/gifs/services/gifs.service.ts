@@ -11,7 +11,7 @@ export class GifsService{
     private url:        string = "https://api.giphy.com/v1/gifs";
     
     constructor(private http: HttpClient) {
-
+        this.loadLocalStorage();
     }
 
     get tagsHistory(){
@@ -42,5 +42,19 @@ export class GifsService{
         }
         this._tagsHistory.unshift(tag);
         this._tagsHistory = this.tagsHistory.splice(0,10);
+        this.saveLocalStorage();
+    }
+
+    private saveLocalStorage(): void{
+        localStorage.setItem('history', JSON.stringify(this._tagsHistory));
+    }
+
+    private loadLocalStorage():void{
+        if(!localStorage.getItem('history')) return;
+       this._tagsHistory = JSON.parse(localStorage.getItem('history')!); // ! not null operator
+
+       if(this._tagsHistory.length === 0) return;
+
+       this.searchTag(this._tagsHistory[0]);
     }
 }
