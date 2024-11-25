@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, of } from "rxjs";
+import { catchError, map, Observable, of } from "rxjs";
 import { Hero } from "../interfaces/hero.interface";
 import { environments } from "../../../environments/environments";
 
@@ -26,8 +26,27 @@ export class HeroesService{
     }
 
     getSuggestions(query : string): Observable<Hero[]>{
-        return this.http.get<Hero[]>(`/heroes?q=${query}&limit=6`);
+        return this.http.get<Hero[]>(`${this.baseUrl}/heroes?q=${query}&limit=6`);
+    }
 
+    addHero(hero: Hero): Observable<Hero>{
+        return this.http.post<Hero>(`${this.baseUrl}/heroes/${hero.id}`, hero);
+    }
+
+    updateHero(hero: Hero): Observable<Hero>{
+        if(!hero.id)
+            throw Error("Hero es dato obligatorio");
+        return this.http.patch<Hero>(`${this.baseUrl}/heroes/${hero.id}`, hero);
+    }
+
+    deleteHeroById(id: string): Observable<boolean>{
+        // if(!id)
+        //     throw Error("Hero es dato obligatorio");
+        return this.http.delete(`${this.baseUrl}/heroes/${id}`)
+                .pipe(
+                    catchError(err => of(false)),
+                    map(resp=> true)
+                );
     }
 
 }
