@@ -19,9 +19,11 @@
       "id": "dc-superman",
       "superhero": "Superman",
       "publisher": "DC Comics",
-      "alter_ego": "Kal-El",
+      "alter_ego": "Kal-El s",
       "first_appearance": "Action Comics #1",
-      "characters": "Kal-El"
+      "characters": "Kal-El",
+      "firts_appearance": "123",
+      "alt_img": "asdas"
     },
     {
       "id": "dc-flash",
@@ -54,14 +56,6 @@
       "alter_ego": "Princess Diana",
       "first_appearance": "All Star Comics #8",
       "characters": "Princess Diana"
-    },
-    {
-      "id": "dc-martian",
-      "superhero": "Martian Manhunter",
-      "publisher": "DC Comics",
-      "alter_ego": "J\"onn J\"onzz",
-      "first_appearance": "Detective Comics #225",
-      "characters": "Martian Manhunter"
     },
     {
       "id": "dc-robin",

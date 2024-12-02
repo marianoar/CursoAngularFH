@@ -44,8 +44,8 @@ export class HeroesService{
         //     throw Error("Hero es dato obligatorio");
         return this.http.delete(`${this.baseUrl}/heroes/${id}`)
                 .pipe(
+                    map(resp=> true),
                     catchError(err => of(false)),
-                    map(resp=> true)
                 );
     }
 
