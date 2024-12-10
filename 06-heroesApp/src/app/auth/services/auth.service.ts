@@ -20,20 +20,20 @@ export class AuthService{
     }
 
     login(email: string, password: string):Observable<User>{
-        return this.http.get<User>(`${this.baseUrl}/user/1`)
+        return this.http.get<User>(`${this.baseUrl}/users/1`)
             .pipe(
                 tap(user => this.user = user),
                 tap(user => localStorage.setItem('token', 'tokenSD5436DFG64564HFH456'))
             );
     }
 
-    checkAuthtentication(): Observable<boolean> | boolean{
+    checkAuthentication(): Observable<boolean>{
         if(!localStorage.getItem('token'))
-            return false;
+            return of(false);
 
         const token = localStorage.getItem('token');
 
-        return this.http.get<User>(`${this.baseUrl}/user/1`)
+        return this.http.get<User>(`${this.baseUrl}/users/1`)
                 .pipe(
                     tap( user => this.user=user),
                     map( user => !!user), //porque lo que tengo que devolver es un booleano, no el user
