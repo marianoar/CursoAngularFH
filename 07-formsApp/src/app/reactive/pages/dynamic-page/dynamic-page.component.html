@@ -8,8 +8,8 @@
         <label class="col-sm-3 col-form-label">Nombre</label>
         <div class="col-sm-9">
             <input class="form-control"
-                formControlName="name"
-                placeholder="Nombre de la persona">
+                placeholder="Nombre de la persona"
+                formControlName="name">
             <span *ngIf="isValidField('name')" class="form-text text-danger">
                    {{getFieldError('name')}}
             </span>
@@ -45,15 +45,14 @@
                 <div class="input-group">
                     <input [formControlName]="i" 
                            class="form-control">
-
                     <button class="btn btn-outline-danger"
                             type="button">
                       Eliminar
-                  </button>
+                    </button>
                 </div>
-                <span class="form-text text-danger">
-                   Este campo es requerido
-                </span>
+                <span *ngIf="isValidFieldInArray(favoriteGames, i)" class="form-text text-danger">
+                    campo required
+             </span>
 
             </div>
 
