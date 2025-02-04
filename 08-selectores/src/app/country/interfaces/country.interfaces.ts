@@ -1,3 +1,17 @@
+export enum Region {
+    Africa = 'Africa',
+    America = 'America',
+    Asia = "Asia",
+    Europa = "Europa",
+    Oceania = 'Oceania'
+}
+
+export interface SmallCountry{
+    name:         string;
+    cca3:         string;
+    borders: string[];
+}
+
 export interface Country {
     name:         Name;
     tld?:         string[];
@@ -55,14 +69,7 @@ export interface CoatOfArms {
     svg?: string;
 }
 
-export enum Region {
-    Africa = 'Africa',
-    America = 'America',
-    Asia = "Asia",
-    Europa = "Europa",
-    Oceania = 'Oceania',
-    Antartida = 'Antartida'
-}
+
 
 export interface Currency {
     name:   string;
